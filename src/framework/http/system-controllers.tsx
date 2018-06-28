@@ -89,7 +89,6 @@ export class AboutController implements Controller<{}> {
 
 }
 
-
 export interface MonitorResult {
   ok: boolean
   message?: string
@@ -98,17 +97,17 @@ export interface MonitorResult {
 export interface Monitor {
   name: string
   optional?: boolean
-  performCheck(): Promise<MonitorResult>
+  performCheck (): Promise<MonitorResult>
 }
 
 export class MonitorController implements Controller<{}> {
 
-  constructor(private monitorCheckers: Monitor[]) {}
+  constructor (private monitorCheckers: Monitor[]) {}
 
-  private static performCheck(checker: Monitor): Promise<MonitorResult & {monitor: Monitor}> {
+  private static performCheck (checker: Monitor): Promise<MonitorResult & {monitor: Monitor}> {
     try {
       return checker.performCheck()
-        .then(result => ({monitor: checker, ...result}))
+        .then(result => ({ monitor: checker, ...result }))
         .catch(e => ({
           ok: false,
           message: 'error executing check',
@@ -123,7 +122,7 @@ export class MonitorController implements Controller<{}> {
     }
   }
 
-  private static resultToString(result: MonitorResult & {monitor: Monitor}) {
+  private static resultToString (result: MonitorResult & {monitor: Monitor}) {
     const status = result.ok ? 'OK' : 'ERROR'
     const message = result.message ? ' ' + result.message : ''
     return ' - ' + result.monitor.name + ': ' + status + message
@@ -141,4 +140,3 @@ export class MonitorController implements Controller<{}> {
     return new TextResponse('APPLICATION_STATUS: ' + mainStatus + '\n' + details)
   }
 }
-
