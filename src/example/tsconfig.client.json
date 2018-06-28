@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": false,
+    "module": "es2015",
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom"
+    ]
+  }
+}

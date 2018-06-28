@@ -1,0 +1,8 @@
+/src
+/dist/example
+/dist/public
+*.test.js
+*.test.d.ts
+/.idea
+/*.iml
+.env

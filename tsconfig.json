@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "strict": true,
+    "noImplicitAny": false,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "dist",
+    "jsx": "react",
+    "jsxFactory": "createElement"
+  }
+}

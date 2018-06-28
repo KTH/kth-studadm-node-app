@@ -1,0 +1,48 @@
+{
+  "name": "kth-studadm-node-app",
+  "version": "1.0.0",
+  "description": "Provides common functionality for the StudAdm node applications",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/example/app.js",
+    "watch-client": "webpack --config src/example/webpack.config.js --watch"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/cookie-parser": "^1.4.1",
+    "@types/node": "^10.3.5",
+    "@types/passport": "^0.4.5",
+    "@types/redis": "^2.8.6",
+    "body-parser": "^1.18.3",
+    "bunyan": "^1.8.12",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "inferno": "^5.1.1",
+    "inferno-create-element": "^5.1.1",
+    "inferno-server": "^5.1.1",
+    "kth-node-cortina-block": "^1.1.2",
+    "kth-node-log": "^3.0.2",
+    "kth-node-passport-cas": "^3.1.3",
+    "kth-node-redis": "^1.2.7",
+    "kth-style": "^3.0.0-beta.6",
+    "passport": "^0.4.0",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/cookie-session": "^2.0.34",
+    "awesome-typescript-loader": "^5.2.0",
+    "cookie-session": "^2.0.0-beta.3",
+    "dotenv": "^6.0.0",
+    "kth-node-configuration": "^1.6.4",
+    "kth-node-ldap": "^2.3.8",
+    "ts-node": "^7.0.0",
+    "typescript": "^2.9.2",
+    "webpack": "^4.12.1",
+    "webpack-assets-manifest": "^3.0.1",
+    "webpack-cli": "^3.0.8"
+  }
+}
