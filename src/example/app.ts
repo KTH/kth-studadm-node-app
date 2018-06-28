@@ -1,27 +1,32 @@
 import express from 'express'
 import cookieSession from 'cookie-session'
 import { config as loadDotEnvFile } from 'dotenv'
-import { getEnv, unpackLDAPConfig, unpackRedisConfig } from 'kth-node-configuration'
+import { getEnv, unpackLDAPConfig } from 'kth-node-configuration'
 import {
   AboutController,
   applyRequestParsing,
   applyStaticRouting,
   Controller,
   ControllerResponse,
-  ControllerSupportExpress, CortinaInput,
+  ControllerSupportExpress,
+  CortinaInput,
   createAuthentication,
   createGetCortinaBlocks,
-  createLdapOptions, ErrorController, getPackageInfo,
-  initLogger, Monitor, MonitorController, notFoundHandler,
+  createLdapOptions,
+  ErrorController,
+  getPackageInfo,
+  getResourceFileNames,
+  initLogger,
+  Monitor,
+  MonitorController,
+  notFoundHandler,
   remapLdapOptionsForLdapClient,
-  requireGroup,
   TextResponse
 } from '..'
 import { createClient } from 'kth-node-ldap'
-import { getResourceFileNames } from '..'
 import { buildInfo } from './version'
 
-interface Input extends CortinaInput{
+interface Input extends CortinaInput {
   params: any,
   query: any,
   groups: string[]
@@ -79,7 +84,6 @@ class IndexController implements Controller<Input> {
 
   async handle (input: Input): Promise<ControllerResponse> {
     console.log(input.groups)
-    requireGroup('test', input.groups)
     return new TextResponse('Test ' + input.query.name)
   }
 }
@@ -101,7 +105,7 @@ const getCortinaBlocks = createGetCortinaBlocks(getMessage, {
 
 const monitor1: Monitor = {
   name: 'monitor1',
-  performCheck() {
+  performCheck () {
     return Promise.resolve({
       ok: true,
       message: 'all is well'
@@ -112,7 +116,7 @@ const monitor1: Monitor = {
 const monitor2: Monitor = {
   name: 'monitor2',
   optional: true,
-  performCheck() {
+  performCheck () {
     return Promise.resolve({
       ok: false,
       message: 'could be better...'
@@ -137,7 +141,7 @@ function createExpressApp (indexController: IndexController) {
     keys: ['secret1', 'secret2']
   }))
 
-  //application.use(languageHandler)
+  // application.use(languageHandler)
 
   const { serverLogin } = authentication.applyTo(application)
 

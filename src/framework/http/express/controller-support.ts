@@ -15,7 +15,7 @@ import { renderToString } from 'inferno-server'
 
 export type InputMapper<ControllerInput> = (req: Request, res: Response) => ControllerInput
 
-export type Newable<T extends ControllerResponse> = { new (...args: any[]): T; };
+export type Newable<T extends ControllerResponse> = { new (...args: any[]): T; }
 
 export type Delegator = (controllerResponse: ControllerResponse, req: Request, res: Response) => void
 

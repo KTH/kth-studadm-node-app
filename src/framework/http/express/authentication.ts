@@ -1,7 +1,7 @@
 import passport from 'passport'
 import log from 'kth-node-log'
 import { GatewayStrategy, routeHandlers, Strategy as CasStrategy } from 'kth-node-passport-cas'
-import { LdapClient, utils } from 'kth-node-ldap'
+import { LdapClient } from 'kth-node-ldap'
 import { Application, RequestHandler, Router } from 'express'
 import { ErrorWithStatus } from '../error-with-status'
 
@@ -29,7 +29,7 @@ interface LdapUser {
   memberOf: string[]
 }
 
-function extractGroupName(ldapDn: string): string | null {
+export function extractGroupName (ldapDn: string): string | null {
   const pattern = /^CN=([a-zA-Z0-9_.]+)/
   const match = pattern.exec(ldapDn)
   if (match) {
@@ -39,6 +39,20 @@ function extractGroupName(ldapDn: string): string | null {
   }
 }
 
+function requireGroup (acceptedGroup: string): RequestHandler {
+  return authorizeGroups(groupNames => groupNames.some(groupName => acceptedGroup === groupName))
+}
+
+function authorizeGroups (isAuthorized: (groupNames: string[]) => boolean): RequestHandler {
+  return (req, res, next) => {
+    const userGroups = req.session && req.session.authUser && req.session.authUser.groups || []
+    if (isAuthorized(userGroups)) {
+      return next()
+    } else {
+      return next(new ErrorWithStatus('Forbidden', 403))
+    }
+  }
+}
 
 export function createAuthentication (ldapClient: LdapClient, config: AuthenticationConfiguration, roleFilter: (groupName: string) => boolean): Authentication {
   passport.serializeUser(function (user, done) {
@@ -99,21 +113,6 @@ export function createAuthentication (ldapClient: LdapClient, config: Authentica
       }
     }
   })
-
-  function requireGroup (acceptedGroup: string): RequestHandler {
-    return authorizeGroups(groupNames => groupNames.some(groupName => acceptedGroup === groupName))
-  }
-
-  function authorizeGroups(isAuthorized: (groupNames: string[]) => boolean): RequestHandler {
-    return (req, res, next) => {
-      const userGroups = req.session && req.session.authUser && req.session.authUser.groups || []
-      if (isAuthorized(userGroups)) {
-        return next()
-      } else {
-        return next(new ErrorWithStatus('Forbidden', 403))
-      }
-    }
-  }
 
   function applyToServer (server: Application) {
     const { authLoginHandler, authCheckHandler, logoutHandler, pgtCallbackHandler, serverLogin } = routeHandlers({

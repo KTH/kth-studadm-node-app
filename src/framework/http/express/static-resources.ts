@@ -6,5 +6,5 @@ export function applyStaticRouting (uriPathPrefix: string, cachableFiles: string
   for (const cachableFile of cachableFiles) {
     application.use(uriPathPrefix + '/static/' + cachableFile, perpetualCache)
   }
-  application.use(uriPathPrefix  + '/static', express.static('./dist/public'))
+  application.use(uriPathPrefix + '/static', express.static('./dist/public'))
 }

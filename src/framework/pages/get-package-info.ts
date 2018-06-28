@@ -1,8 +1,8 @@
 import { PackageInfo } from './about-page'
-import { readFileSync } from "fs"
+import { readFileSync } from 'fs'
 import log from 'kth-node-log'
 
-export function getPackageInfo(): PackageInfo {
+export function getPackageInfo (): PackageInfo {
   try {
     return JSON.parse(readFileSync('./package.json', 'utf8'))
   } catch (e) {
