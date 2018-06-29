@@ -1,6 +1,3 @@
-//noinspection ES6UnusedImports
-import { createElement } from 'inferno-create-element'
-
 export const cortinaBlocks = {
   footer: '<span id="cortina-footer"></span>',
   image: '<span id="cortina-image"></span>',

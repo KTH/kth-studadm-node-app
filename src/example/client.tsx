@@ -3,4 +3,3 @@ import { clientConfigEnvelopeId } from './client-config'
 
 const config = retrieveDataFromEnvelope(clientConfigEnvelopeId)
 console.log('client!', config)
-
