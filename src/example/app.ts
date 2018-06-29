@@ -126,7 +126,7 @@ const monitor2: Monitor = {
 
 const resourceFileNames = getResourceFileNames('./dist/public/manifest.json')
 const packageInfo = getPackageInfo()
-const errorController = new ErrorController(uriPathPrefix, getCortinaBlocks, resourceFileNames, getMessage)
+const errorController = new ErrorController(uriPathPrefix, getCortinaBlocks, resourceFileNames)
 const aboutController = new AboutController(packageInfo, buildInfo, uriPathPrefix)
 const monitorController = new MonitorController([monitor1, monitor2])
 

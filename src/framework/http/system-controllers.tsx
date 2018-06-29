@@ -25,24 +25,43 @@ type ErrorControllerInput = CortinaInput & { error: any }
 type MessageKey = 'supportReferenceId' | 'errorNotFound' | 'errorForbidden' | 'errorGeneric'
 type MessageGetter = (key: MessageKey, lang: 'sv' | 'en') => string
 
+const errorMessages = {
+  errorNotFound: {
+    sv: 'Tyvärr kunde vi inte hitta sidan du söker',
+    en: 'Sorry, we can\'t find your requested page'
+  },
+  errorGeneric: {
+    sv: 'Något gick fel, var god försök igen senare',
+    en: 'Something went wrong, please try again later.'
+  },
+  errorForbidden: {
+    sv: 'Du saknar behörighet till sidan',
+    en: 'You don\'t have permission to access to this page'
+  },
+  supportReferenceId: {
+    sv: 'Vid felanmälan och kontakt med support, ange referens',
+    en: 'Please use this reference if you need support regarding this error'
+  }
+}
+
+function getFriendlyErrorMessage (error: any, lang: 'sv' | 'en') {
+  const statusCode = error && error.status || 500
+  switch (statusCode) {
+    case 404:
+      return errorMessages.errorNotFound[lang]
+    case 403:
+      return errorMessages.errorForbidden[lang]
+    default:
+      return errorMessages.errorGeneric[lang]
+  }
+}
+
+
 export class ErrorController implements Controller<ErrorControllerInput> {
 
   constructor (private uriPathPrefix: string,
                private getCortinaBlocks: cortinaBlocksGetter,
-               private resourceFileNames: ResourceFileNames,
-               private getMessage: MessageGetter) {}
-
-  getFriendlyErrorMessage (error: any, lang: 'sv' | 'en') {
-    const statusCode = error && error.status || 500
-    switch (statusCode) {
-      case 404:
-        return this.getMessage('errorNotFound', lang)
-      case 403:
-        return this.getMessage('errorForbidden', lang)
-      default:
-        return this.getMessage('errorGeneric', lang)
-    }
-  }
+               private resourceFileNames: ResourceFileNames) {}
 
   async handle (input: ErrorControllerInput): Promise<ControllerResponse> {
     const supportReferenceId = Date.now().toString(36)
@@ -55,9 +74,9 @@ export class ErrorController implements Controller<ErrorControllerInput> {
     return new StatusResponse(statusCode,
       new NegotiatedResponse({
         'html': new JSXResponse(<ErrorPage blocks={blocks}
-                                           friendly={this.getFriendlyErrorMessage(error, lang)}
+                                           friendly={getFriendlyErrorMessage(error, lang)}
                                            supportReferenceId={supportReferenceId}
-                                           supportMessage={this.getMessage('supportReferenceId', lang)}
+                                           supportMessage={errorMessages.supportReferenceId[lang]}
                                            message={error.message}
                                            language={lang}
                                            status={statusCode}
@@ -67,7 +86,7 @@ export class ErrorController implements Controller<ErrorControllerInput> {
         'json': new JsonResponse({
           message: error.message,
           supportReferenceId: supportReferenceId,
-          friendly: this.getFriendlyErrorMessage(error, lang)
+          friendly: getFriendlyErrorMessage(error, lang)
         }),
         'text': new TextResponse(error.message + ' (' + supportReferenceId + ')')
       })
