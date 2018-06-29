@@ -22,9 +22,6 @@ export interface CortinaInput {
 
 type ErrorControllerInput = CortinaInput & { error: any }
 
-type MessageKey = 'supportReferenceId' | 'errorNotFound' | 'errorForbidden' | 'errorGeneric'
-type MessageGetter = (key: MessageKey, lang: 'sv' | 'en') => string
-
 const errorMessages = {
   errorNotFound: {
     sv: 'Tyvärr kunde vi inte hitta sidan du söker',
