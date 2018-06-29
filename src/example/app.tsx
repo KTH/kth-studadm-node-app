@@ -15,6 +15,7 @@ import {
   createAuthentication,
   createGetCortinaBlocks,
   createLdapOptions,
+  DataEnvelope,
   ErrorController,
   getPackageInfo,
   getResourceFileNames,
@@ -29,7 +30,6 @@ import {
 import { createClient } from 'kth-node-ldap'
 import { buildInfo } from './version'
 import { cortinaBlocks } from './cortina-blocks'
-import { DataEnvelope } from '../framework/components/data-envelope'
 import { ClientConfig, clientConfigEnvelopeId } from './client-config'
 
 interface Input extends CortinaInput {
