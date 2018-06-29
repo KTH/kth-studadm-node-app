@@ -26,7 +26,7 @@ const devPlugins = [
 ]
 
 const devAlias = {
-  inferno: __dirname + "/node_modules/inferno/dist/index.dev.esm.js"
+  inferno: path.join(process.cwd(), 'node_modules/inferno/dist/index.dev.esm.js')
 }
 
 const devFileName = '[name].bundle.js'

@@ -1,3 +1,5 @@
+//noinspection ES6UnusedImports
+import { createElement } from 'inferno-create-element'
 import express from 'express'
 import cookieSession from 'cookie-session'
 import { config as loadDotEnvFile } from 'dotenv'
@@ -17,14 +19,18 @@ import {
   getPackageInfo,
   getResourceFileNames,
   initLogger,
+  JSXResponse,
   Monitor,
   MonitorController,
   notFoundHandler,
-  remapLdapOptionsForLdapClient,
-  TextResponse
+  Page,
+  remapLdapOptionsForLdapClient
 } from '..'
 import { createClient } from 'kth-node-ldap'
 import { buildInfo } from './version'
+import { cortinaBlocks } from './cortina-blocks'
+import { DataEnvelope } from '../framework/components/data-envelope'
+import { ClientConfig, clientConfigEnvelopeId } from './client-config'
 
 interface Input extends CortinaInput {
   params: any,
@@ -43,22 +49,6 @@ const messages = {
   'locale_text': {
     sv: 'Exempelapp på svenska',
     en: 'Example app in swedish'
-  },
-  'supportReferenceId': {
-    sv: 'Vid felanmälan och kontakt med support, ange referens',
-    en: 'Please use this reference if you need support regarding this error'
-  },
-  'errorNotFound': {
-    sv: 'Tyvärr kunde vi inte hitta sidan du söker',
-    en: 'Sorry, we can\'t find your requested page'
-  },
-  'errorGeneric': {
-    sv: 'Något gick fel, var god försök igen senare',
-    en: 'Something went wrong, please try again later.'
-  },
-  'errorForbidden': {
-    sv: 'Du saknar behörighet till sidan',
-    en: 'You don\'t have permission to access to this page'
   }
 }
 
@@ -83,8 +73,22 @@ const authentication = createAuthentication(ldapClient, {
 class IndexController implements Controller<Input> {
 
   async handle (input: Input): Promise<ControllerResponse> {
-    console.log(input.groups)
-    return new TextResponse('Test ' + input.query.name)
+    const clientConfig: ClientConfig = { path: uriPathPrefix }
+    const extraHeadContent = (<DataEnvelope id={clientConfigEnvelopeId} data={clientConfig}/>)
+    return new JSXResponse(
+      <Page resourceFileNames={getResourceFileNames('./dist/public/manifest.json')}
+            blocks={cortinaBlocks}
+            title={'Example app'}
+            proxyPrefixPathUri={uriPathPrefix}
+            language={'sv'}
+            extraHeadContent={extraHeadContent}>
+        <h1>
+          Example app
+        </h1>
+        <h2>Input</h2>
+        <pre>{JSON.stringify(input, null, 2)}</pre>
+      </Page>
+    )
   }
 }
 
