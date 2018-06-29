@@ -53,7 +53,6 @@ function getFriendlyErrorMessage (error: any, lang: 'sv' | 'en') {
   }
 }
 
-
 export class ErrorController implements Controller<ErrorControllerInput> {
 
   constructor (private uriPathPrefix: string,
