@@ -19,7 +19,7 @@ export function createLdapOptions (ldapBase: string) {
     base: ldapBase,
     filter: '(ugKthid=KTHID)',
     filterReplaceHolder: 'KTHID',
-    userattrs: ['displayName', 'mail', 'ugUsername', 'memberOf'],
+    userattrs: ['displayName', 'mail', 'ugUsername', 'memberOf', 'ugLadok3StudentUid'],
     groupattrs: ['cn', 'objectCategory'],
     reconnect: true
   }

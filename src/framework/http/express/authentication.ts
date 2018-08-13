@@ -26,6 +26,7 @@ interface LdapUser {
   ugUsername: string
   displayName: string
   mail: string
+  ugLadok3StudentUid: string | undefined
   memberOf: string[]
 }
 
@@ -106,6 +107,7 @@ export function createAuthentication (ldapClient: LdapClient, config: Authentica
         username: ldapUser.ugUsername,
         displayName: ldapUser.displayName,
         email: ldapUser.mail,
+        ugLadok3StudentUid: ldapUser.ugLadok3StudentUid,
         pgtIou: pgtIou,
         groups: ldapUser.memberOf
           .map(extractGroupName)
