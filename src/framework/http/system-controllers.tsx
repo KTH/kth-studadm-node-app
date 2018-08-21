@@ -22,7 +22,7 @@ export interface CortinaInput {
 
 type ErrorControllerInput = CortinaInput & { error: any }
 
-const errorMessages = {
+export const errorMessages = {
   errorNotFound: {
     sv: 'Tyvärr kunde vi inte hitta sidan du söker',
     en: 'Sorry, we can\'t find your requested page'
