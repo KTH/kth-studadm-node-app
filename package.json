@@ -1,6 +1,6 @@
 {
   "name": "@kth/kth-studadm-node-app",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Provides common functionality for the StudAdm node applications",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
