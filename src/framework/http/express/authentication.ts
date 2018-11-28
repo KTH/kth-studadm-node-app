@@ -28,7 +28,6 @@ interface LdapUser {
   mail: string
   ugLadok3StudentUid: string | undefined
   memberOf: string[]
-  ugLadok3StudentUid: string
 }
 
 export function extractGroupName (ldapDn: string): string | null {
