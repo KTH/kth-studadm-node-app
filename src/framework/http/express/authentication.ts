@@ -109,7 +109,6 @@ export function createAuthentication (ldapClient: LdapClient, config: Authentica
         email: ldapUser.mail,
         ugLadok3StudentUid: ldapUser.ugLadok3StudentUid,
         pgtIou: pgtIou,
-        ugLadok3StudentUid: ldapUser.ugLadok3StudentUid,
         groups: ldapUser.memberOf
           .map(extractGroupName)
           .filter(groupName => groupName && roleFilter(groupName))

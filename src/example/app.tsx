@@ -95,7 +95,7 @@ class IndexController implements Controller<Input> {
 const controllerSupport = new ControllerSupportExpress<Input>(req => ({
   params: req.params,
   query: req.query,
-  groups: req.session.authUser.groups,
+  groups: req.session!.authUser.groups,
   url: req.url,
   baseUrl: req.baseUrl,
   lang: 'sv'
