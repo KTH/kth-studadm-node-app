@@ -10,7 +10,6 @@ export function KthHeader ({ blocks }) {
           </div>
           <div class='blockItemSeparator blockItemSeparatorIndex0'>
             <span class='blockItemSeparatorInner'/>
-            <div id='searchBlock' dangerouslySetInnerHTML={{ __html: blocks.search }}/>
           </div>
         </div>
         <div id='secondaryHeader' class='secondaryHeader'>
