@@ -1,6 +1,6 @@
 {
   "name": "@kth/kth-studadm-node-app",
-  "version": "2.4.2",
+  "version": "3.0.0",
   "description": "Provides common functionality for the StudAdm node applications",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -33,7 +33,7 @@
     "inferno": "^5.2.0",
     "inferno-create-element": "^5.2.0",
     "inferno-server": "^5.1.1",
-    "kth-node-cortina-block": "^2.2.4",
+    "kth-node-cortina-block": "^3.0.0",
     "kth-node-redis": "^1.2.7",
     "redis": "^2.8.0"
   },
