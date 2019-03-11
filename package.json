@@ -19,7 +19,10 @@
     "type": "git",
     "url": "git+https://github.com/KTH/kth-studadm-node-app.git"
   },
-  "author": "",
+  "author": {
+    "name": "Stefan Sundkvist",
+    "email": "sst@kth.se"
+  },
   "license": "MIT",
   "dependencies": {
     "@types/body-parser": "^1.17.0",
