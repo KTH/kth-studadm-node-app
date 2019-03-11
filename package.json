@@ -12,7 +12,7 @@
     "codecheck-fix": "tslint -c tslint.json --fix 'src/**/*.{ts,tsx}'",
     "preversion": "npm run codecheck && npm test",
     "postversion": "git push && git push --tags",
-    "prepare": "rm -r dist && npm run build && npm test && npm run codecheck",
+    "prepack": "rm -r dist && npm run build && npm test && npm run codecheck",
     "test": "mocha --require ts-node/register \"src/**/*.test.{ts,tsx}\""
   },
   "repository": {

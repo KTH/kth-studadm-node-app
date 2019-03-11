@@ -32,7 +32,6 @@ export class Page extends Component<PageProps, {}> {
         <title>{title}</title>
 
         <link rel='stylesheet' href={proxyPrefixPathUri + '/static/kth-style/css/kth-bootstrap.min.css'}/>
-       
         <script src={proxyPrefixPathUri + '/static/' + resourceFileNames.vendorJs}/>
         <script src='https://www.kth.se/social/toolbar/widget.js'/>
         {extraHeadContent}
