@@ -23,29 +23,33 @@ export class Page extends Component<PageProps, {}> {
   render ({ blocks, proxyPrefixPathUri, extraHeadContent, title, children, language, resourceFileNames }: PageProps) {
     return (
       <html lang={language}>
-      <head>
-        <meta http-equiv='Content-Type' content='utf-8'/>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
-        <meta name='viewport' content='width=device-width, initial-scale=1'/>
-        <meta name='description' content='{{description}}'/>
-        <link rel='shortcut icon' id='favicon' href='//www.kth.se/img/icon/favicon.ico'/>
-        <title>{title}</title>
+        <head>
+          <meta http-equiv='Content-Type' content='utf-8' />
+          <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+          <meta name='viewport' content='width=device-width, initial-scale=1' />
+          <meta name='description' content='{{description}}' />
+          <link rel='shortcut icon' id='favicon' href='//www.kth.se/img/icon/favicon.ico' />
+          <title>{title}</title>
 
-        <link rel='stylesheet' href={proxyPrefixPathUri + '/static/kth-style/css/kth-bootstrap.min.css'}/>
-        <link rel='stylesheet' href='//static.sys.kth.se/uf/ita/css/kth-style-temp.css' />
+          {/* <link rel='stylesheet' href={'https://www.kth.se/css/kth-eaf75b4dcc731582488f6534515477db.css'} /> */}
+          <link rel='stylesheet' href={proxyPrefixPathUri + '/static/kth-style/css/kth-bootstrap.css'}/>
 
-        <script src={proxyPrefixPathUri + '/static/' + resourceFileNames.vendorJs}/>
-        <script src='https://www.kth.se/social/toolbar/widget.js'/>
-        {extraHeadContent}
-      </head>
-      <body>
-      <div class='container'>
-        <KthHeader blocks={blocks}/>
-        <div id='app'>{children}</div>
-        <KthFooter blocks={blocks}/>
-        <script src={proxyPrefixPathUri + '/static/' + resourceFileNames.appJs}/>
-      </div>
-      </body>
+          <script src={proxyPrefixPathUri + '/static/' + resourceFileNames.vendorJs} />
+          <script src={proxyPrefixPathUri + '/static/kth-style/js/backtotop.min.js'} />
+          <script src='https://www.kth.se/social/toolbar/widget.js' />
+          {extraHeadContent}
+        </head>
+        <body class='defaultTheme use-personal-menu'>
+          <KthHeader blocks={blocks} />
+          <div class='container start noMainMenu'>
+            <div id='app' class='row'>
+                {children}
+            </div>
+          </div>
+          <KthFooter blocks={blocks} />
+          <div id='back-to-top' role='link' class='' aria-hidden='true'>Till sidans topp</div>
+          <script src={proxyPrefixPathUri + '/static/' + resourceFileNames.appJs} />
+        </body>
       </html>
     )
   }
