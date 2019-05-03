@@ -3,6 +3,7 @@ import { createElement } from 'inferno-create-element'
 import { KthHeader } from './kth-header'
 import { KthFooter } from './kth-footer'
 import { Component } from 'inferno'
+import { messages } from '../i18n'
 
 interface ResourceFileNames {
   vendorJs: string,
@@ -15,11 +16,12 @@ interface PageProps {
   proxyPrefixPathUri: string
   extraHeadContent?: any
   children: any,
-  language: string
+  language: string,
   resourceFileNames: ResourceFileNames
 }
 
-export class Page extends Component<PageProps, {}> {
+export class Page extends Component<PageProps, any> {
+  
   render ({ blocks, proxyPrefixPathUri, extraHeadContent, title, children, language, resourceFileNames }: PageProps) {
     return (
       <html lang={language}>
@@ -45,14 +47,14 @@ export class Page extends Component<PageProps, {}> {
           {extraHeadContent}
         </head>
         <body class='defaultTheme use-personal-menu'>
-          <KthHeader blocks={blocks} />
+          <KthHeader blocks={blocks} language />
           <div class='container start noMainMenu'>
             <div id='app' class='row'>
                 {children}
             </div>
           </div>
           <KthFooter blocks={blocks} />
-          <div id='back-to-top' role='link' class='' aria-hidden='true'>Till sidans topp</div>
+          <div id='back-to-top' role='link' class='' aria-hidden='true'>{messages.tilltopp[language]}</div>
           <script src={proxyPrefixPathUri + '/static/' + resourceFileNames.appJs} />
         </body>
       </html>

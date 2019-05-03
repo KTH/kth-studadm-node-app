@@ -71,7 +71,7 @@ export function ErrorPage ({ blocks, proxyPrefixPathUri, status, friendly, messa
     </head>
     <body class='error code{{status}} use-personal-menu'>
     <div class='content'>
-      <KthHeader blocks={blocks}/>
+      <KthHeader blocks={blocks} language/>
       <h1>{status}</h1>
       <h3>{friendly}</h3>
       <p>{supportMessage}: <strong>{supportReferenceId}</strong></p>
