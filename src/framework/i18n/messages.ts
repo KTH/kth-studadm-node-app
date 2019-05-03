@@ -1,12 +1,12 @@
 export const messages = {
-    tilltopp: {
-      sv: 'Till sidans topp',
-      en: 'Back to top'
-    },
-    breadcrumb: {
-        sv: 'Brödsmulor - navigation uppåt i innehållsstrukturen',
-        en: 'Breadcrumbs - navigation upwards in content structure'
-    }
+  tilltopp: {
+    sv: 'Till sidans topp',
+    en: 'Back to top'
+  },
+  breadcrumb: {
+    sv: 'Brödsmulor - navigation uppåt i innehållsstrukturen',
+    en: 'Breadcrumbs - navigation upwards in content structure'
+  }
 }
 
 export type MessageKey = keyof typeof messages
