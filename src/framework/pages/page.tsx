@@ -21,7 +21,6 @@ interface PageProps {
 }
 
 export class Page extends Component<PageProps, any> {
-  
   render ({ blocks, proxyPrefixPathUri, extraHeadContent, title, children, language, resourceFileNames }: PageProps) {
     return (
       <html lang={language}>
@@ -46,7 +45,7 @@ export class Page extends Component<PageProps, any> {
           <script src='https://www.kth.se/social/toolbar/widget.js' />
           {extraHeadContent}
 
-          <style dangerouslySetInnerHTML={{__html: "#app { padding-bottom: 20px; }"}}></style>
+          <style dangerouslySetInnerHTML={{ __html: '#app { padding-bottom: 20px; }' }}></style>
         </head>
         <body class='defaultTheme use-personal-menu'>
           <KthHeader blocks={blocks} language />

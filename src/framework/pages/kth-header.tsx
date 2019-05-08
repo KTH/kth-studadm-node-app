@@ -23,7 +23,7 @@ export function KthHeader ({ blocks, language }) {
           <nav id='breadcrumbs' class='col-12 col-md-9' dangerouslySetInnerHTML={{ __html: blocks.navigation }}>
             <ol aria-label={messages.breadcrumb[language]} class='breadcrumb'>
             </ol>
-          </nav> 
+          </nav>
           <div class='translations col-12 col-md-3' dangerouslySetInnerHTML={{ __html: blocks.language }}>
           </div>
         </div>
