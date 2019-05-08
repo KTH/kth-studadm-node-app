@@ -4,7 +4,7 @@ import { messages } from '../i18n'
 
 export function KthHeader ({ blocks, language }) {
   return (
-    <header>
+    <header role='banner'>
       <div class='container-fluid'>
         <div class='container'>
           <div class='header-container__top'>

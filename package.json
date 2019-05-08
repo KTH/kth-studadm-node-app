@@ -1,6 +1,6 @@
 {
   "name": "@kth/kth-studadm-node-app",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Provides common functionality for the StudAdm node applications",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -53,7 +53,7 @@
     "kth-node-ldap": "^2.3.8",
     "kth-node-log": "^3.0.2",
     "kth-node-passport-cas": "^3.1.7",
-    "kth-style": "^3.2.4",
+    "kth-style": "^3.2.8",
     "mocha": "^5.2.0",
     "passport": "^0.4.0",
     "ts-node": "^7.0.1",
