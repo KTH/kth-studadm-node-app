@@ -21,7 +21,7 @@ interface PageProps {
 }
 
 export class Page extends Component<PageProps, any> {
-  
+
   render ({ blocks, proxyPrefixPathUri, extraHeadContent, title, children, language, resourceFileNames }: PageProps) {
     return (
       <html lang={language}>
