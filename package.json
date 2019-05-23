@@ -1,6 +1,6 @@
 {
   "name": "@kth/kth-studadm-node-app",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "Provides common functionality for the StudAdm node applications",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -38,6 +38,7 @@
     "inferno-server": "^5.1.1",
     "kth-node-cortina-block": "^3.0.5",
     "kth-node-redis": "^1.2.7",
+    "kth-node-web-common": "^3.0.6",
     "redis": "^2.8.0"
   },
   "devDependencies": {
