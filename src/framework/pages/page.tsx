@@ -48,7 +48,7 @@ export class Page extends Component<PageProps, any> {
           <style dangerouslySetInnerHTML={{ __html: '#app { padding-bottom: 20px; }' }}></style>
         </head>
         <body class='defaultTheme use-personal-menu'>
-          <KthHeader blocks={blocks} language />
+          <KthHeader blocks={blocks} proxyPrefixPathUri={proxyPrefixPathUri} language={language} />
           <div class='container main'>
             <div id='app' class='row'>
                 {children}
