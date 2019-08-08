@@ -9,7 +9,7 @@ export function KthHeader ({ blocks, proxyPrefixPathUri, language }) {
         <div class='container'>
           <div class='header-container__top'>
             <figure class='block figure defaultTheme mainLogo' data-cid='1.77257' dangerouslySetInnerHTML={{ __html: blocks.language }}>
-              <a href={proxyPrefixPathUri}><img class='figure-img img-fluid' src={proxyPrefixPathUri + '/static/kth-style/img/kth-style/KTH_Logotyp_RGB_2013-2.svg'} alt='KTH:s logotyp' height='70' width='70' /></a>
+              <a href={proxyPrefixPathUri + '/'}><img class='figure-img img-fluid' src={proxyPrefixPathUri + '/static/kth-style/img/kth-style/KTH_Logotyp_RGB_2013-2.svg'} alt='KTH:s logotyp' height='70' width='70' /></a>
             </figure>
             <div dangerouslySetInnerHTML={{ __html: blocks.title }}></div>
           </div>
