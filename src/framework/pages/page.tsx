@@ -35,7 +35,7 @@ export class Page extends Component<PageProps, any> {
           {/* <link rel='stylesheet' href={'https://www.kth.se/css/kth-eaf75b4dcc731582488f6534515477db.css'} /> */}
           <link rel='stylesheet' href={proxyPrefixPathUri + '/static/kth-style/css/kth-bootstrap.css'}/>
 
-          {/* <script src={proxyPrefixPathUri + '/static/kth-style/js/jquery-3.3.1.min.js'} /> */}
+          <script src={proxyPrefixPathUri + '/static/kth-style/js/jquery-3.3.1.min.js'} />
           <script src={proxyPrefixPathUri + '/static/kth-style/js/popper.min.js'} />
 
           <script src={proxyPrefixPathUri + '/static/' + resourceFileNames.vendorJs} />
