@@ -1,4 +1,5 @@
 import {
+  BinaryFileAttachmentResponse,
   Controller,
   ControllerResponse,
   FileAttachmentResponse,
@@ -70,10 +71,18 @@ const builtInResponders: ExpressResponder<any>[] = [
     }
   },
   {
+    responseType: BinaryFileAttachmentResponse,
+    applyToResponse (controllerResponse: BinaryFileAttachmentResponse, req: Request, res: Response) {
+      res.setHeader('Content-Disposition', 'attachment; filename=' + controllerResponse.attachment.filename)
+      res.contentType(controllerResponse.attachment.contentType)
+      res.end(controllerResponse.attachment.data, 'binary')
+    }
+  },
+  {
     responseType: StatusResponse,
-    applyToResponse (fileAttachmentResponse: StatusResponse, req: Request, res: Response, delegator: Delegator) {
-      res.status(fileAttachmentResponse.status)
-      delegator(fileAttachmentResponse.delegate, req, res)
+    applyToResponse (statusResponse: StatusResponse, req: Request, res: Response, delegator: Delegator) {
+      res.status(statusResponse.status)
+      delegator(statusResponse.delegate, req, res)
     }
   },
   {

@@ -55,3 +55,6 @@ export class FileAttachmentResponse extends ControllerResponse {
     super()
   }
 }
+
+export class BinaryFileAttachmentResponse extends FileAttachmentResponse {
+}
