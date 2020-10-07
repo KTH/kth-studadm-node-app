@@ -28,7 +28,7 @@
   "dependencies": {
     "@types/body-parser": "^1.17.0",
     "@types/cookie-parser": "^1.4.1",
-    "@types/node": "^10.17.37",
+    "@types/node": "^10.12.10",
     "@types/redis": "^2.8.8",
     "body-parser": "^1.18.3",
     "bunyan": "^1.8.12",
@@ -64,7 +64,7 @@
     "typescript": "^2.9.2",
     "webpack": "^4.12.1",
     "webpack-assets-manifest": "^3.0.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.0.8"
   },
   "peerDependencies": {
     "passport": "^0.4.0",
