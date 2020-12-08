@@ -30,15 +30,12 @@ export class Page extends Component<PageProps, any> {
           <meta http-equiv='X-UA-Compatible' content='IE=edge' />
           <meta name='viewport' content='width=device-width, initial-scale=1' />
           <meta name='description' content='{{description}}' />
-          <link rel='shortcut icon' id='favicon' href='static/kth-style/img/kth-style/favicon.ico' />
           <title>{title}</title>
 
-          {/* <link rel='stylesheet' href={'https://www.kth.se/css/kth-eaf75b4dcc731582488f6534515477db.css'} /> */}
           <link rel='stylesheet' href={proxyPrefixPathUri + '/static/kth-style/css/kth-bootstrap.css'}/>
 
           <script src={proxyPrefixPathUri + '/static/' + resourceFileNames.vendorJs} />
           <script src={proxyPrefixPathUri + '/static/kth-style/js/bootstrap.min.js'} />
-          <script src={proxyPrefixPathUri + '/static/kth-style/js/backtotop.min.js'} />
           <script src='https://www.kth.se/social/toolbar/widget.js' />
           {extraHeadContent}
 
@@ -52,7 +49,6 @@ export class Page extends Component<PageProps, any> {
             </div>
           </div>
           <KthFooter blocks={blocks} />
-          <div id='back-to-top' role='link' class='' aria-hidden='true'>{messages.tilltopp[language]}</div>
           <script src={proxyPrefixPathUri + '/static/' + resourceFileNames.appJs} />
         </body>
       </html>
