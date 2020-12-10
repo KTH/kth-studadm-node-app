@@ -62,8 +62,8 @@
     "tslint": "^5.11.0",
     "tslint-config-standard": "^9.0.0",
     "typescript": "^3.9.7",
-    "webpack": "^4.12.1",
-    "webpack-assets-manifest": "^4.0.0",
+    "webpack": "^5.10.0",
+    "webpack-assets-manifest": "^5.0.0",
     "webpack-cli": "^4.2.0"
   },
   "peerDependencies": {
