@@ -55,6 +55,12 @@ function authorizeGroups (isAuthorized: (groupNames: string[]) => boolean): Requ
   }
 }
 
+export function extractGroups(ldapUser: LdapUser, roleFilter: (groupName: string) => boolean): (string | null)[] {
+  return [...ldapUser.memberOf]
+    .map(extractGroupName)
+    .filter(groupName => groupName && roleFilter(groupName))
+}
+
 export function createAuthentication (ldapClient: LdapClient, config: AuthenticationConfiguration, roleFilter: (groupName: string) => boolean): Authentication {
   passport.serializeUser(function (user, done) {
     if (user) {
@@ -109,9 +115,7 @@ export function createAuthentication (ldapClient: LdapClient, config: Authentica
         email: ldapUser.mail,
         ugLadok3StudentUid: ldapUser.ugLadok3StudentUid,
         pgtIou: pgtIou,
-        groups: ldapUser.memberOf
-          .map(extractGroupName)
-          .filter(groupName => groupName && roleFilter(groupName))
+        groups: extractGroups(ldapUser, roleFilter)
       }
     }
   })
