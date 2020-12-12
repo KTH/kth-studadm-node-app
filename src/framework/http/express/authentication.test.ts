@@ -1,6 +1,6 @@
 import { describe , it } from 'mocha'
 import { expect } from 'chai'
-import {extractGroupName, extractGroups} from './authentication'
+import { extractGroupName, extractGroups } from './authentication'
 
 const ldapDN = 'CN=app.app_group.KTH,DN=ug,DN=kth,DN=se'
 const groupName = 'app.app_group.KTH'
@@ -16,12 +16,12 @@ describe('authentication', function () {
   describe('extractGroups', function () {
     it('should extract groups from Ldap user', function () {
       const groups = extractGroups({
-        displayName: "",
-        mail: "",
+        displayName: '',
+        mail: '',
         memberOf: [ldapDN],
         ugLadok3StudentUid: undefined,
-        ugUsername: ""
-      }, (groupName) => {return groupName === groupName})
+        ugUsername: ''
+      }, (groupName) => groupName === groupName)
       expect(groups.length).to.equal(1)
     })
   })

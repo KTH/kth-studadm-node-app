@@ -10,7 +10,7 @@
     "start": "node dist/example/app.js",
     "watch-client": "webpack --config src/example/webpack.config.js --watch",
     "codecheck": "tslint -p tsconfig.json -c tslint.json 'src/**/*.{ts,tsx}'",
-    "codecheck-fix": "tslint -c tslint.json --fix 'src/**/*.{ts,tsx}'",
+    "codecheck-fix": "tslint -p tsconfig.json -c tslint.json --fix 'src/**/*.test.{ts,tsx}'",
     "preversion": "npm run codecheck && npm test",
     "postversion": "git push && git push --tags",
     "prepack": "rm -r dist && npm run build && npm test && npm run codecheck",

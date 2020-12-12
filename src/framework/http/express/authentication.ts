@@ -55,7 +55,7 @@ function authorizeGroups (isAuthorized: (groupNames: string[]) => boolean): Requ
   }
 }
 
-export function extractGroups(ldapUser: LdapUser, roleFilter: (groupName: string) => boolean): (string | null)[] {
+export function extractGroups (ldapUser: LdapUser, roleFilter: (groupName: string) => boolean): (string | null)[] {
   return [...ldapUser.memberOf]
     .map(extractGroupName)
     .filter(groupName => groupName && roleFilter(groupName))
