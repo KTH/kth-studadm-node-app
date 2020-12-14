@@ -14,15 +14,25 @@ describe('authentication', function () {
   })
 
   describe('extractGroups', function () {
-    it('should extract groups from Ldap user', function () {
+    it('should extract groups from single group', function () {
       const groups = extractGroups({
         displayName: '',
         mail: '',
-        memberOf: [ldapDN],
+        memberOf: ldapDN,
         ugLadok3StudentUid: undefined,
         ugUsername: ''
       }, (groupName) => groupName === groupName)
       expect(groups.length).to.equal(1)
+    })
+    it('should extract groups from many groups', function () {
+      const groups = extractGroups({
+        displayName: '',
+        mail: '',
+        memberOf: [ldapDN, ldapDN],
+        ugLadok3StudentUid: undefined,
+        ugUsername: ''
+      }, (groupName) => groupName === groupName)
+      expect(groups.length).to.equal(2)
     })
   })
 })

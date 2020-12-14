@@ -27,7 +27,7 @@ interface LdapUser {
   displayName: string
   mail: string
   ugLadok3StudentUid: string | undefined
-  memberOf: string[]
+  memberOf: string | string[]
 }
 
 export function extractGroupName (ldapDn: string): string | null {
@@ -56,9 +56,10 @@ function authorizeGroups (isAuthorized: (groupNames: string[]) => boolean): Requ
 }
 
 export function extractGroups (ldapUser: LdapUser, roleFilter: (groupName: string) => boolean): (string | null)[] {
-  return [...ldapUser.memberOf]
-    .map(extractGroupName)
-    .filter(groupName => groupName && roleFilter(groupName))
+  return new Array<string>()
+        .concat(ldapUser.memberOf)
+        .map(extractGroupName)
+        .filter(groupName => groupName && roleFilter(groupName))
 }
 
 export function createAuthentication (ldapClient: LdapClient, config: AuthenticationConfiguration, roleFilter: (groupName: string) => boolean): Authentication {
