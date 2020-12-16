@@ -36,7 +36,7 @@
     "express": "^4.16.4",
     "inferno": "^5.2.0",
     "inferno-create-element": "^5.2.0",
-    "inferno-server": "^5.1.1",
+    "inferno-server": "^7.4.6",
     "kth-node-cortina-block": "^3.1.0",
     "kth-node-redis": "^3.1.7",
     "kth-node-web-common": "^5.1.3",
