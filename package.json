@@ -35,7 +35,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
     "inferno": "^5.2.0",
-    "inferno-create-element": "^5.2.0",
+    "inferno-create-element": "^7.4.6",
     "inferno-server": "^5.1.1",
     "kth-node-cortina-block": "^3.1.0",
     "kth-node-redis": "^3.1.7",
