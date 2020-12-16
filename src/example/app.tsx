@@ -76,7 +76,7 @@ class IndexController implements Controller<Input> {
     const clientConfig: ClientConfig = { path: uriPathPrefix }
     const extraHeadContent = (<DataEnvelope id={clientConfigEnvelopeId} data={clientConfig}/>)
     return new JSXResponse(
-      <Page resourceFileNames={getResourceFileNames('./dist/public/manifest.json')}
+      <Page resourceFileNames={getResourceFileNames('./dist/public/assets-manifest.json')}
             blocks={cortinaBlocks}
             title={'Example app'}
             proxyPrefixPathUri={uriPathPrefix}
@@ -128,7 +128,7 @@ const monitor2: Monitor = {
   }
 }
 
-const resourceFileNames = getResourceFileNames('./dist/public/manifest.json')
+const resourceFileNames = getResourceFileNames('./dist/public/assets-manifest.json')
 const packageInfo = getPackageInfo()
 const errorController = new ErrorController(uriPathPrefix, getCortinaBlocks, resourceFileNames)
 const aboutController = new AboutController(packageInfo, buildInfo, uriPathPrefix)

@@ -58,7 +58,13 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx|ts|tsx)?$/,
-        loader: 'awesome-typescript-loader?configFileName=src/example/tsconfig.client.json&transpileOnly=true'
+        exclude: /server\//, // exclude server-code, it should not be included from the client
+        loader: 'awesome-typescript-loader',
+        options: {
+          // ... other loader's options
+          configFileName: 'src/example/tsconfig.client.json',
+          useCache: true
+        },
       }
     ]
   },
