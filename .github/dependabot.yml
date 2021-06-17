@@ -1,0 +1,32 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 14.14.23
+    - 15.0.0
+  - dependency-name: webpack
+    versions:
+    - 5.34.0
+  - dependency-name: redis
+    versions:
+    - 3.1.0
+    - 3.1.1
+  - dependency-name: chai
+    versions:
+    - 4.3.2
+  - dependency-name: npm-check-updates
+    versions:
+    - 11.1.2
+  - dependency-name: "@types/passport"
+    versions:
+    - 1.0.5
+  - dependency-name: kth-style
+    versions:
+    - 6.0.6
